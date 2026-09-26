@@ -1,0 +1,27 @@
+import Link from 'next/link'
+import React from 'react'
+
+export default function Nav() {
+  return (
+    <nav className='w-screen h-20 px-6 flex items-center justify-between border-b border-[#1C1F26]'>
+        <div className='flex items-center gap-2.5'>
+            <img src="/logo.png"/>
+            <span className='text-lg font-black font-oswald text-white leading-7 tracking-[0.9px]'>FITLOG</span>
+        </div>
+        <div className='flex items-center gap-5'>
+            <Link href="workouts" className='font-semibold text-xs text-[#C2F800] px-4 py-1.5 rounded-full bg-[#1a2312]'>Workouts</Link>
+            <Link href="plan" className='text-xs font-medium text-[#9ca3af]'>My Plan </Link>
+        </div>
+        <div className='flex gap-6 items-center'>
+            <div className='flex items-center gap-2'>
+                <span className='text-xs font-medium text-[#d1d5db]'>Plan</span>
+                <span className='w-5 h-5 bg-[#C2F800] rounded-full flex items-center justify-center text-[11px] font-bold text-black'>0</span>
+            </div>
+            <div className='flex items-center gap-2'>
+                <span className='text-xs font-medium text-[#9ca3af]'>Saved</span>
+                <span className='w-5 h-5 border border-[#2D313B] rounded-full flex items-center justify-center text-[11px] font-bold text-[#d1d5db]'>0</span>
+            </div>
+        </div>
+    </nav>
+  )
+}
