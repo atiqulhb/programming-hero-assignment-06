@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Nav() {
   return (
-    <nav className='w-screen h-20 px-6 flex items-center justify-between border-b border-[#1C1F26]'>
+    <nav className='w-screen h-(--nav-h) px-6 flex items-center justify-between border-b border-[#1C1F26]'>
         <div className='flex items-center gap-2.5'>
             <img src="/logo.png"/>
             <span className='text-lg font-black font-oswald text-white leading-7 tracking-[0.9px]'>FITLOG</span>

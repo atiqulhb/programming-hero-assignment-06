@@ -28,7 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${oswald.variable} h-full antialiased`}
     >
       <body className={`${inter.className} min-h-full flex flex-col`}>
-        <Nav/>
+        <header className="shrink-0">
+          <Nav/>
+        </header>
         {children}
       </body>
     </html>
