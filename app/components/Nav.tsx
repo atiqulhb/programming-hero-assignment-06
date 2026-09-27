@@ -1,7 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Nav() {
+    const pathname = usePathname()
   return (
     <nav className='w-screen h-(--nav-h) px-6 flex items-center justify-between border-b border-[#1C1F26]'>
         <div className='flex items-center gap-2.5'>
@@ -9,8 +13,8 @@ export default function Nav() {
             <span className='text-lg font-black font-oswald text-white leading-7 tracking-[0.9px]'>FITLOG</span>
         </div>
         <div className='flex items-center gap-5'>
-            <Link href="/" className='font-semibold text-xs text-[#C2F800] px-4 py-1.5 rounded-full bg-[#1a2312]'>Workouts</Link>
-            <Link href="/my-plan" className='text-xs font-medium text-[#9ca3af]'>My Plan </Link>
+            <Link href="/" className={`${pathname === "/" ? "active-link" : "not-active-link"} text-xs`}>Workouts</Link>
+            <Link href="/my-plan" className={`${pathname === "/my-plan" ? "active-link" : "not-active-link"} text-xs`}>My Plan </Link>
         </div>
         <div className='flex gap-6 items-center'>
             <Link href="/my-plan">

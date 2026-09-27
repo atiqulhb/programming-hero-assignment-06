@@ -12,6 +12,14 @@
   @apply flex justify-center items-center;
 }
 
+@utility active-link {
+  @apply font-semibold text-[#C2F800] px-4 py-1.5 rounded-full bg-[#1a2312]
+}
+
+@utility not-active-link {
+  @apply font-medium text-[#9ca3af]
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
