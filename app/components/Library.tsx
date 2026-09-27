@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import WorkoutCard from '@/app/components/WorkoutCard'
 
 export default function Library({ workouts }) {
@@ -7,7 +8,9 @@ export default function Library({ workouts }) {
         <p className='text-sm text-[#9CA3AF]'>Twelve lifts covering every major muscle group.</p>
         <div className='grid grid-cols-3 gap-6'>
           {workouts.map(workout => (
-            <WorkoutCard key={workout.id} info={workout}/>
+            <Link key={workout.id} href={`/workout-details/${workout.id}`}>
+              <WorkoutCard info={workout}/>
+            </Link>
           ))}
         </div>
     </section>
