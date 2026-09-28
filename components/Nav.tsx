@@ -3,9 +3,12 @@
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
+import { useWorkouts } from '@/context/WorkoutContext'
 
 export default function Nav() {
     const pathname = usePathname()
+    const { savedWorkouts, todaysPlan} = useWorkouts()
+    console.log(savedWorkouts, todaysPlan)
   return (
     <nav className='w-screen h-(--nav-h) px-6 flex items-center justify-between border-b border-[#1C1F26]'>
         <div className='flex items-center gap-2.5'>
@@ -20,13 +23,13 @@ export default function Nav() {
             <Link href="/my-plan">
                 <div className='flex items-center gap-2'>
                     <span className='text-xs font-medium text-[#d1d5db]'>Plan</span>
-                    <span className='w-5 h-5 bg-[#C2F800] rounded-full flex items-center justify-center text-[11px] font-bold text-black'>0</span>
+                    <span className='w-5 h-5 bg-[#C2F800] rounded-full flex items-center justify-center text-[11px] font-bold text-black'>{todaysPlan.length}</span>
                 </div>
             </Link>
             <Link href="/my-plan">
                 <div className='flex items-center gap-2'>
                     <span className='text-xs font-medium text-[#9ca3af]'>Saved</span>
-                    <span className='w-5 h-5 border border-[#2D313B] rounded-full flex items-center justify-center text-[11px] font-bold text-[#d1d5db]'>0</span>
+                    <span className='w-5 h-5 border border-[#2D313B] rounded-full flex items-center justify-center text-[11px] font-bold text-[#d1d5db]'>{savedWorkouts.length}</span>
                 </div>
             </Link>
         </div>

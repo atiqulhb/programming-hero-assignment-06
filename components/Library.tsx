@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import WorkoutCard from '@/app/components/WorkoutCard'
+import WorkoutCard from '@/components/WorkoutCard'
 
 export default function Library({ workouts }) {
   return (

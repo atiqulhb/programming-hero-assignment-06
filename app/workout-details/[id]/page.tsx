@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import WorkoutDetailsButtons from '@/components/WorkoutDetailsButtons'
 
 async function getWorkoutDetails(id) {
   const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`)
@@ -12,6 +13,7 @@ async function getWorkoutDetails(id) {
 
 export default async function page({ params }) {
     const { id } = await params
+    const workout = await getWorkoutDetails(id)
     const {
       name,
       image,
@@ -25,7 +27,7 @@ export default async function page({ params }) {
       rating,
       description,
       instructions
-    } = await getWorkoutDetails(id)
+    } = workout
 
   return (
     <div className='w-[80vw] m-auto flex gap-14'>
@@ -78,17 +80,9 @@ export default async function page({ params }) {
             <li key={key} className='text-sm text-[#D1D5DB]'>{instruction}</li>
           ))}
         </ol>
-        <div className='flex items-center gap-2'>
-          <button className='px-6 py-3 rounded-xl bg-[#CCFF00] flex items-center gap-2'>
-            <img src="/addToBag.svg" width="16" alt="add to bag svg"/>
-            <span className='font-extrabold text-sm text-[#0F1115]'>Add to today's plan</span>
-          </button>
-          <button className='px-6 py-3 border border-[#374151] rounded-xl flex items-center gap-2'>
-            <img src="/save.svg" width="16" alt="save svg"/>
-            <span className='font-medium text-sm text-[#E5E7EB]'>Save for later</span>
-          </button>
-        </div>
+        <WorkoutDetailsButtons infoToBeSaved={{ id, name, image, equipment, duration, caloriesBurned, rating }}/>
       </div>
     </div>
   )
 }
+

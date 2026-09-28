@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
-import Nav from '@/app/components/Nav'
+import Nav from '@/components/Nav'
+import { WorkoutProvider } from '@/context/WorkoutContext'
 import "./globals.css";
 
 const oswald = Oswald({
@@ -28,10 +29,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${oswald.variable} h-full antialiased`}
     >
       <body className={`${inter.className} min-h-full flex flex-col`}>
-        <header className="shrink-0">
-          <Nav/>
-        </header>
-        {children}
+        <WorkoutProvider>
+          <header className="shrink-0">
+            <Nav/>
+          </header>
+          {children}
+        </WorkoutProvider>
       </body>
     </html>
   );

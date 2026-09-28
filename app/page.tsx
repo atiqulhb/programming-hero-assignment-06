@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Hero from '@/app/components/Hero'
-import Library from '@/app/components/Library'
+import Hero from '@/components/Hero'
+import Library from '@/components/Library'
 
 async function getWorkouts() {
   const res = await fetch('https://api.abcz.workers.dev/api/fitlog')
