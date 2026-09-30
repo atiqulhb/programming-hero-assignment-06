@@ -7,8 +7,8 @@ import { useWorkouts } from '@/context/WorkoutContext'
 
 export default function Nav() {
     const pathname = usePathname()
-    const { savedWorkouts, todaysPlan} = useWorkouts()
-    console.log(savedWorkouts, todaysPlan)
+    const { savedWorkouts, todaysPlan } = useWorkouts()
+ 
   return (
     <nav className='w-screen h-(--nav-h) px-6 flex items-center justify-between border-b border-[#1C1F26]'>
         <div className='flex items-center gap-2.5'>

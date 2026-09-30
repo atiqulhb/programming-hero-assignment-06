@@ -5,12 +5,15 @@ import { createContext, useContext, useEffect, useState } from "react"
 const WorkoutContext = createContext(null)
 
 export function WorkoutProvider({ children }) {
+    const [mounted, setMounted] = useState(false)
     const [savedWorkouts, setSavedWorkouts] = useState([])
     const [todaysPlan, setTodaysPlan] = useState([])
 
     useEffect(() => {
         const saved = localStorage.getItem("saved-workouts")
         const plan = localStorage.getItem("todays-plan")
+
+        console.log(saved)
 
         if (saved) {
             setSavedWorkouts(JSON.parse(saved))
@@ -19,14 +22,21 @@ export function WorkoutProvider({ children }) {
         if (plan) {
             setTodaysPlan(JSON.parse(plan))
         }
+
+        setMounted(true)
     }, [])
 
     useEffect(() => {
-        localStorage.setItem("saved-workouts", JSON.stringify(savedWorkouts))
+        if (mounted) {
+            localStorage.setItem("saved-workouts", JSON.stringify(savedWorkouts))
+        }
+        
     }, [savedWorkouts])
 
      useEffect(() => {
-        localStorage.setItem("todays-plan", JSON.stringify(todaysPlan))
+        if (mounted) {
+            localStorage.setItem("todays-plan", JSON.stringify(todaysPlan))
+        }
     }, [todaysPlan])
 
     function addToSavedWorkouts(workout) {
