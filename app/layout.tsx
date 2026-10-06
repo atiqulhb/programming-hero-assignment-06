@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
 import Nav from '@/components/Nav'
+import Toast from "@/components/Toast"
+import Footer from "@/components/Footer";
 import { WorkoutProvider } from '@/context/WorkoutContext'
-import { Toaster } from 'sonner'
-import { Check, X } from 'lucide-react'
 import "./globals.css";
 
 const oswald = Oswald({
@@ -37,18 +37,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </header>
           {children}
         </WorkoutProvider>
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            classNames: {
-              toast: 'w-fit! bg-[#1E2330]! border-[#9CA3AF]! text-[#E5E7EB]!'
-            }
-          }}
-          icons={{
-            success: <Check size={18} className="text-white p-0.5 bg-green-300 rounded-full"/>,
-            error: <X size={20} className="text-white p-0.5 bg-red-400 rounded-full"/>
-          }}
-        />
+        <Footer/>
+        <Toast/>
       </body>
     </html>
   );
