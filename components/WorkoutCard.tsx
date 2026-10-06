@@ -8,7 +8,7 @@ type WorkoutCardProps = {
 export default function WorkoutCard({ info }: WorkoutCardProps) {
     const { name, image, muscleGroups, equipment, duration, caloriesBurned, rating } = info
   return (
-    <div className='bg-[#15171D] border border-[#222630] rounded-2xl flex flex-col overflow-hidden'>
+    <div className='bg-[#15171D] border border-[#222630] hover:border-[#C2F800] rounded-2xl flex flex-col overflow-hidden'>
         <div className='w-full h-50 relative'>
             <Image src={image} fill objectFit='cover' alt={name}/>
         </div>
