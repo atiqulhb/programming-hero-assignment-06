@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Hero from '@/components/Hero'
 import Library from '@/components/Library'
+import type { Workout } from '@/types/workout'
 
-async function getWorkouts() {
+async function getWorkouts(): Promise<Workout[]> {
   const res = await fetch('https://api.abcz.workers.dev/api/fitlog')
   
   if (!res.ok) {

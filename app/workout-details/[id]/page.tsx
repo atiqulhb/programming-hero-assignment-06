@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import WorkoutDetailsButtons from '@/components/WorkoutDetailsButtons'
+import type { Workout } from '@/types/workout'
 
-async function getWorkoutDetails(id) {
+async function getWorkoutDetails(id: string): Promise<Workout> {
   const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`)
 
   if (!res.ok) {
@@ -11,7 +12,11 @@ async function getWorkoutDetails(id) {
   return res.json()
 }
 
-export default async function page({ params }) {
+type PageProps = {
+  params: Promise<{ id: string }>
+}
+
+export default async function page({ params }: PageProps) {
     const { id } = await params
     const workout = await getWorkoutDetails(id)
     const {

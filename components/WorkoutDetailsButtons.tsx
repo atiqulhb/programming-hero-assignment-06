@@ -1,8 +1,13 @@
 'use client'
 
-import { useWorkouts } from '@/context/WorkoutContext';
+import { useWorkouts } from '@/context/WorkoutContext'
+import type { WorkoutInfosToSave } from '@/types/workout'
 
-export default function WorkoutDetailsButtons({ infoToBeSaved }) {
+type WorkoutDetailsButtonProps = {
+  infoToBeSaved: WorkoutInfosToSave
+}
+
+export default function WorkoutDetailsButtons({ infoToBeSaved }: WorkoutDetailsButtonProps) {
   const { addToSavedWorkouts, addToTodaysPlan } = useWorkouts()
 
   return (

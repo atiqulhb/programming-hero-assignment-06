@@ -5,14 +5,24 @@ import SavedWorkout from './SavedWorkout'
 import TodaysPlan from './TodaysPlan'
 import { useWorkouts } from '@/context/WorkoutContext'
 
+type Tab = 'todays-plan' | 'saved'
+
+export type SortBy = 'duration' | 'calories' | 'rating'
+
+type Total = {
+    length: number
+    duration: number
+    caloriesBurned: number
+}
+
 export default function PlanningAndSaving() {
     const { savedWorkouts, todaysPlan } = useWorkouts()
-    const [tab, setTab] = useState('todays-plan')
-    const [sortBy, setSortBy] = useState('duration')
-    const [savedExcerciseInfo, setSavedExcerciseInfo] = useState({
+    const [tab, setTab] = useState<Tab>('todays-plan')
+    const [sortBy, setSortBy] = useState<SortBy>('duration')
+    const [total, setTotal] = useState<Total>({
         length: 0,
-        totalDuration: 0,
-        totalCaloriesBurned: 0
+        duration: 0,
+        caloriesBurned: 0
     })
 
     useEffect(() => {
@@ -26,10 +36,10 @@ export default function PlanningAndSaving() {
             return acc
         }, { duration: 0, caloriesBurned: 0 })
 
-        setSavedExcerciseInfo({
+        setTotal({
             length,
-            totalDuration: total.duration,
-            totalCaloriesBurned: total.caloriesBurned
+            duration: total.duration,
+            caloriesBurned: total.caloriesBurned
         })
         
     }, [tab, savedWorkouts, todaysPlan])
@@ -38,15 +48,15 @@ export default function PlanningAndSaving() {
         <div className='w-full p-6 pt-8 rounded-2xl border border-[#232732] bg-[#13161D] flex items-center gap-8 my-6'>
             <div className='flex flex-col flex-1 border-r border-[#232732]'>
                 <span className='text-xs text-[#8A92A0]'>Excercises</span>
-                <span className='font-oswald font-bold text-4xl text-[#CCFF00]'>{savedExcerciseInfo.length}</span>
+                <span className='font-oswald font-bold text-4xl text-[#CCFF00]'>{total.length}</span>
             </div>
             <div className='flex flex-col flex-1 border-r border-[#232732]'>
                 <span className='text-xs text-[#8A92A0]'>Minutes</span>
-                <span className='font-oswald font-bold text-4xl text-white'>{savedExcerciseInfo.totalDuration}</span>
+                <span className='font-oswald font-bold text-4xl text-white'>{total.duration}</span>
             </div>
             <div className='flex flex-col flex-1'>
                 <span className='text-xs text-[#8A92A0]'>Calories</span>
-                <span className='font-oswald font-bold text-4xl text-white'>{savedExcerciseInfo.totalCaloriesBurned}</span>
+                <span className='font-oswald font-bold text-4xl text-white'>{total.caloriesBurned}</span>
             </div>
         </div>
         <div className='flex items-center justify-between'>
@@ -76,7 +86,7 @@ export default function PlanningAndSaving() {
                 <span className='text-xs text-[#8A92A0]'>Sort By</span>
                 <select
                     className='bg-[#13161D] border border-[#232732] rounded-[9px] p-2 text-white cursor-pointer'
-                    onClick={(e) => setSortBy(e.target.value)}
+                    onChange={(e) => setSortBy(e.target.value as SortBy)}
                 >
                     <option className='text-xs bg-[#13161D] rounded-[9px] p-2 text-white cursor-pointer' value="duration">Duration</option>
                     <option className='text-xs bg-[#13161D] rounded-[9px] p-2 text-white' value="calories">Calories</option>

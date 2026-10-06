@@ -1,8 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import type { WorkoutInfosToSave } from '@/types/workout'
+import { useWorkouts } from '@/context/WorkoutContext'
 
-export default function WorkoutList({ type, workoutList, removeWorkout }) {
-  console.log(type)
+type WorkoutListProps = {
+  type: string
+  workoutList: WorkoutInfosToSave[]
+  removeWorkout: (id: string) => void
+}
+
+export default function WorkoutList({ type, workoutList, removeWorkout }: WorkoutListProps) {
+  const { markAsDone } = useWorkouts()
   return (
     <ul className='flex flex-col gap-4'>
         {workoutList.map((workout) => (
@@ -38,7 +46,12 @@ export default function WorkoutList({ type, workoutList, removeWorkout }) {
                   {type === "todays-plan" && (
                     <button className='px-5 py-2.5 rounded-full bg-[#CCFF00] flex items-center gap-1.5 cursor-pointer'>
                       <img src="/tik.svg" width="14"/>
-                      <span className='font-semibold text-xs text-black'>Mark as Done</span>
+                      <span
+                        className='font-semibold text-xs text-black'
+                        onClick={() => markAsDone(workout.id)}
+                      >
+                        Mark as Done
+                      </span>
                     </button>
                   )}
                   
