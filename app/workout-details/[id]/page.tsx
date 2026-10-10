@@ -35,9 +35,9 @@ export default async function page({ params }: PageProps) {
     } = workout
 
   return (
-    <div className='w-[80vw] m-auto flex gap-14'>
-      <div className='flex-1 relative rounded-2xl overflow-hidden'>
-        <Image src={image} fill alt={name} className='object-cover'/>
+    <div className='w-[80vw] m-auto flex flex-col lg:flex-row gap-14'>
+      <div className='flex-1 w-full relative rounded-2xl overflow-hidden aspect-4/3 lg:aspect-5/4'>
+        <Image src={image} fill alt={name} sizes="(max-width: 1023px) 80vw, 40vw" className='object-cover'/>
       </div>
       <div className='flex-1'>
         <h1 className='font-oswald text-4xl tracking-[-0.9] text-white mb- '>{name}</h1>

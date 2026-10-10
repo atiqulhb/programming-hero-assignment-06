@@ -11,7 +11,7 @@ export default function Workouts({ workoutsPromise }: WorkoutsProps) {
     const workouts = use(workoutsPromise)
 
   return (
-    <div className='grid grid-cols-[repeat(auto-fit,minmax(395px,1fr))] gap-6'>
+    <div className='grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6'>
         {workouts.map(workout => (
           <Link key={workout.id} href={`/workout-details/${workout.id}`}>
             <WorkoutCard info={workout}/>

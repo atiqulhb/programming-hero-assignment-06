@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <div className='px-6 py-8 border border-[#1B1F28] flex items-center justify-between'>
+    <div className='px-6 py-8 border border-[#1B1F28] flex flex-col lg:flex-row items-center gap-2 justify-between'>
         <div className='flex gap-2'>
             <Image src="/logo.png" width={20} height={20} alt="fitlog logo"/>
             <span className='font-oswald text-sm font-bold tracking-[0.7px] text-white'>FITLOG</span>

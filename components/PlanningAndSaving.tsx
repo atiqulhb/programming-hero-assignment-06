@@ -59,7 +59,7 @@ export default function PlanningAndSaving() {
                 <span className='font-oswald font-bold text-4xl text-white'>{total.caloriesBurned}</span>
             </div>
         </div>
-        <div className='flex items-center justify-between'>
+        <div className='flex flex-col lg:flex-row items-center justify-between'>
             <div className='bg-[#151921] border border-[#232732] rounded-xl p-1 flex items-center gap-1 mb-6'>
                 <button
                     className={`${

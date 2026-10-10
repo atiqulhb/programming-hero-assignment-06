@@ -15,7 +15,7 @@ export default function WorkoutList({ type, workoutList, removeWorkout }: Workou
     <ul className='flex flex-col gap-4'>
         {workoutList.map((workout) => (
             <li key={workout.id}>
-              <div className='w-full p-4 bg-[#14171E] border border-[#232732] rounded-2xl flex items-center justify-between'>
+              <div className='w-full p-4 bg-[#14171E] border border-[#232732] rounded-2xl flex flex-col lg:flex-row gap-5 items-center justify-between'>
                 <div className='flex gap-4 items-center'>
                   <div className='w-36 h-20 relative rounded-xl overflow-hidden'>
                     <Image src={workout.image} fill className='object-cover' alt={workout.name}/>

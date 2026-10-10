@@ -23,7 +23,7 @@ export default function Library() {
   const WorkoutsPromise = getWorkouts()
   
   return (
-    <section id="library" className='px-25'>
+    <section id="library" className='lg:px-25'>
         <h2 className='text-white font-bold text-3xl font-oswald tracking-[-0.75px]'>THE LIBRARY</h2>
         <p className='text-sm text-[#9CA3AF] mb-8'>Twelve lifts covering every major muscle group.</p>
         <Suspense fallback={<WorkoutsSkeleton/>}>

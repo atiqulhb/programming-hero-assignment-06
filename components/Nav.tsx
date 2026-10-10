@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useWorkouts } from '@/context/WorkoutContext'
 
@@ -10,12 +11,25 @@ export default function Nav() {
  
   return (
     <nav className='w-full h-(--nav-h) px-6 flex items-center justify-between border-b border-[#1C1F26]'>
-        <div className='flex items-center gap-2.5'>
+        <details className="dropdown lg:hidden">
+            <summary className="btn m-1 p-0.5 rounded-sm cursor-pointer">
+                <img src="/hamburger.svg" alt="menu icon"/>
+            </summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-auto p-2 shadow-sm">
+                <li>
+                    <Link href="/" className={`${pathname === "/" ? "active-link" : "not-active-link"} text-xs`}>Workouts</Link>
+                </li>
+                <li>
+                    <Link href="/my-plan" className={`${pathname === "/my-plan" ? "active-link" : "not-active-link"} text-xs`}>My Plan </Link>
+                </li>
+            </ul>
+        </details>
+        <Link href="/" className='flex items-center gap-2.5'>
             <img src="/logo.png"/>
             <span className='text-lg font-black font-oswald text-white leading-7 tracking-[0.9px]'>FITLOG</span>
-        </div>
-        <div className='flex items-center gap-5'>
-            <Link href="/" className={`${pathname === "/" ? "active-link" : "not-active-link"} text-xs`}>Workouts</Link>
+        </Link>
+        <div className='hidden md:flex items-center gap-5'>
+            <Link href="/#library" className={`${pathname === "/" ? "active-link" : "not-active-link"} text-xs`}>Workouts</Link>
             <Link href="/my-plan" className={`${pathname === "/my-plan" ? "active-link" : "not-active-link"} text-xs`}>My Plan </Link>
         </div>
         <div className='flex gap-6 items-center'>

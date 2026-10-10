@@ -11,7 +11,7 @@ export default function WorkoutDetailsButtons({ infoToBeSaved }: WorkoutDetailsB
   const { addToSavedWorkouts, addToTodaysPlan } = useWorkouts()
 
   return (
-    <div className='flex items-center gap-2'>
+    <div className=' flex items-center gap-2 justify-center mb-10'>
       <button
         className='px-6 py-3 rounded-xl bg-[#CCFF00] flex items-center gap-2 cursor-pointer'
         onClick={() => addToTodaysPlan(infoToBeSaved)}

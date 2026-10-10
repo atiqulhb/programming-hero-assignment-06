@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <main className="px-6 py-(--home-main-py)">
-      {/* <Hero/>      */}
+      <Hero/>
       <Library/>
     </main>
   );
