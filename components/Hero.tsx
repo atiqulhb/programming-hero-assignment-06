@@ -8,7 +8,7 @@ export default function Hero() {
             <h1 className='text-6xl font-oswald font-extrabold leading-15 tracking-[-1.5px] text-white uppercase'>TRAIN WITH INTENT. LOG EVERY SET.</h1>
             <p className='text-[#9ca3af] w-[75%]'>FitLog is a dark, no-nonsense gym companion: pick a lift, lock it into today's plan, and watch the week's work add up.</p>
             <div>
-              <a href="" className="text-xs font-bold px-6 py-3 rounded-md bg-[#C2F800] shrink-0">BROWSE WORKOUTS</a>
+              <a href="#library" className="text-xs font-bold px-6 py-3 rounded-md bg-[#C2F800] shrink-0">BROWSE WORKOUTS</a>
             </div> 
         </div>
         <div className='flex-1 flex-center'>

@@ -10,24 +10,19 @@ type TodaysPlanProps = {
 }
 
 export default function TodaysPlan({ sortBy }: TodaysPlanProps) {
-  
-    const { todaysPlan, removeFromTodaysPlan } = useWorkouts()
+  const {isInitialized, todaysPlan, removeFromTodaysPlan } = useWorkouts()
 
-    const sortedWorkouts = [...todaysPlan].sort((a, b) => {
-      if (sortBy === "duration") return a.duration - b.duration
-      if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned
-      if (sortBy === "rating") return a.rating - b.rating
+  if (!isInitialized) return <p className='font-oswald font-bold text-xl text-white text-center'>Loading workouts…</p>
 
-      return 0
-    })
+  if (todaysPlan.length === 0) return <EmptyWorkout/>
 
-    return(
-      <div>
-        {sortedWorkouts.length === 0 ? (
-          <EmptyWorkout/>
-        ) : (
-          <WorkoutList type="todays-plan" workoutList={sortedWorkouts} removeWorkout={removeFromTodaysPlan}/>
-        )}
-      </div>
-  )
+  const sortedWorkouts = [...todaysPlan].sort((a, b) => {
+    if (sortBy === "duration") return a.duration - b.duration
+    if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned
+    if (sortBy === "rating") return a.rating - b.rating
+
+    return 0
+  })
+
+  return <WorkoutList type="todays-plan" workoutList={sortedWorkouts} removeWorkout={removeFromTodaysPlan}/>
 }

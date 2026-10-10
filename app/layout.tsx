@@ -29,14 +29,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${oswald.variable} h-full antialiased`}
     >
-      <body className={`${inter.className} min-h-full flex flex-col`}>
+      <body className={`${inter.className} min-h-dvh flex flex-col`}>
         <WorkoutProvider>
           <header className="shrink-0">
             <Nav/>
           </header>
-          {children}
+          <main className="flex-1">
+            {children}
+          </main>
         </WorkoutProvider>
-        <Footer/>
+        <footer className="shrink-0">
+          <Footer/>
+        </footer>
         <Toast/>
       </body>
     </html>

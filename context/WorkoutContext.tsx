@@ -5,6 +5,7 @@ import type { WorkoutInfosToSave } from '@/types/workout'
 import { toast } from 'sonner'
 
 type WorkoutContextType = {
+    isInitialized: Boolean
     savedWorkouts: WorkoutInfosToSave[]
     todaysPlan: WorkoutInfosToSave[]
     addToSavedWorkouts: (workout: WorkoutInfosToSave) => void
@@ -17,7 +18,7 @@ type WorkoutContextType = {
 const WorkoutContext = createContext<WorkoutContextType | undefined>(undefined)
 
 export function WorkoutProvider({ children }: { children: React.ReactNode }) {
-    const [mounted, setMounted] = useState<boolean>(false)
+    const [isInitialized, setIsInitialized] = useState<boolean>(false)
     const [savedWorkouts, setSavedWorkouts] = useState<WorkoutInfosToSave[]>([])
     const [todaysPlan, setTodaysPlan] = useState<WorkoutInfosToSave[]>([])
 
@@ -35,18 +36,18 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
             setTodaysPlan(JSON.parse(plan))
         }
 
-        setMounted(true)
+        setIsInitialized(true)
     }, [])
 
     useEffect(() => {
-        if (mounted) {
+        if (isInitialized) {
             localStorage.setItem("saved-workouts", JSON.stringify(savedWorkouts))
         }
         
     }, [savedWorkouts])
 
      useEffect(() => {
-        if (mounted) {
+        if (isInitialized) {
             localStorage.setItem("todays-plan", JSON.stringify(todaysPlan))
         }
     }, [todaysPlan])
@@ -97,7 +98,7 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
     }
 
     return (
-        <WorkoutContext.Provider value={{ savedWorkouts, todaysPlan, addToSavedWorkouts, removeFromSavedWorkouts, addToTodaysPlan, removeFromTodaysPlan, markAsDone }}>
+        <WorkoutContext.Provider value={{isInitialized, savedWorkouts, todaysPlan, addToSavedWorkouts, removeFromSavedWorkouts, addToTodaysPlan, removeFromTodaysPlan, markAsDone }}>
             {children}
         </WorkoutContext.Provider>
     )

@@ -11,24 +11,20 @@ type SavedWorkoutProps = {
 
 
 export default function SavedWorkout({ sortBy }: SavedWorkoutProps) {
-    const { savedWorkouts, removeFromSavedWorkouts } = useWorkouts()
+  const {isInitialized, savedWorkouts, removeFromSavedWorkouts } = useWorkouts()
 
-    const sortedWorkouts = [...savedWorkouts].sort((a, b) => {
-      if (sortBy === "duration") return a.duration - b.duration
-      if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned
-      if (sortBy === "rating") return a.rating - b.rating
+    if (!isInitialized) return <p  className='font-oswald font-bold text-xl text-white'>Loading workouts…</p>
+  
+    if (savedWorkouts.length === 0) return <EmptyWorkout/>
 
-      return 0
-    })
-    
-    return(
-      <div>
-        {savedWorkouts.length === 0 ? (
-          <EmptyWorkout/>
-        ) : (
-          <WorkoutList type="saved" workoutList={sortedWorkouts} removeWorkout={removeFromSavedWorkouts}/>
-        )}
-      </div>
-  )
+  const sortedWorkouts = [...savedWorkouts].sort((a, b) => {
+    if (sortBy === "duration") return a.duration - b.duration
+    if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned
+    if (sortBy === "rating") return a.rating - b.rating
+
+    return 0
+  })
+  
+  return <WorkoutList type="saved" workoutList={sortedWorkouts} removeWorkout={removeFromSavedWorkouts}/>
 }
 

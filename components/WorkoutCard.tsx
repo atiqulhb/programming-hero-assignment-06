@@ -18,7 +18,7 @@ export default function WorkoutCard({ info }: WorkoutCardProps) {
                     <span key={key} className='px-2.5 py-0.5 bg-[#C2F800] font-bold text-[11px] tracking-[0.55px] rounded-full'>{mg}</span>
                 ))}
             </div>
-            <h2 className='font-oswald font-bold text-lg tracking-[#0.45px] my-1 text-white'>{name}</h2>
+            <h2 className='font-oswald font-bold text-lg tracking-[#0.45px] mt-2 text-white'>{name}</h2>
             <span className='text-[#9CA3AF]'>{equipment}</span>
             <div className='flex items-center gap-4 pt-3 mt-4 border-t border-[#20242E]'>
                 <div className='flex items-center gap-1.5'>

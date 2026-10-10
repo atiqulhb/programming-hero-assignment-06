@@ -1,25 +1,16 @@
-import Image from "next/image";
+import { Suspense } from "react";
 import Hero from '@/components/Hero'
 import Library from '@/components/Library'
 import type { Workout } from '@/types/workout'
 
-async function getWorkouts(): Promise<Workout[]> {
-  const res = await fetch('https://api.abcz.workers.dev/api/fitlog')
-  
-  if (!res.ok) {
-    throw new Error(`Failed to fetch workouts: ${res.status}`);
-  }
-  
-  return res.json()
-}
+
 
 export default async function Home() {
-  const workouts = await getWorkouts()
 
   return (
     <main className="px-6 py-(--home-main-py)">
-      <Hero/>
-      <Library workouts={workouts}/>
+      {/* <Hero/>      */}
+      <Library/>
     </main>
   );
 }

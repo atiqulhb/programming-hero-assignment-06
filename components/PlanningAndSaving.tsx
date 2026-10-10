@@ -82,15 +82,16 @@ export default function PlanningAndSaving() {
                     Saved
                 </button>
             </div>
-            <div className='flex items-center gap-3'>
+            <div className='flex gap-3 items-center'>
                 <span className='text-xs text-[#8A92A0]'>Sort By</span>
                 <select
-                    className='bg-[#13161D] border border-[#232732] rounded-[9px] p-2 text-white cursor-pointer'
+                    defaultValue="Duration"
+                    className="select w-50 border border-[#232732] rounded-[9px] p-2 text-white cursor-pointer"
                     onChange={(e) => setSortBy(e.target.value as SortBy)}
                 >
-                    <option className='text-xs bg-[#13161D] rounded-[9px] p-2 text-white cursor-pointer' value="duration">Duration</option>
-                    <option className='text-xs bg-[#13161D] rounded-[9px] p-2 text-white' value="calories">Calories</option>
-                    <option className='text-xs text-white' value="rating">Rating</option>
+                    <option className='text-xs hover:bg=[#13161D] rounded-[9px] p-2 text-white cursor-pointer'>Duration</option>
+                    <option className='text-xs hover:bg=[#13161D] rounded-[9px] p-2 text-white cursor-pointer'>Calories</option>
+                    <option className='text-xs hover:bg=[#13161D] rounded-[9px] p-2 text-white cursor-pointer'>Rating</option>
                 </select>
             </div>
         </div>
